@@ -185,7 +185,8 @@ nav ul li a {
   position: relative;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active {
   color: var(--base-color);
 }
 
@@ -202,7 +203,8 @@ nav ul li a::after {
   transition: width 0.2s;
 }
 
-nav ul li a:hover::after {
+nav ul li a:hover::after,
+nav ul li a.active::after {
   width: 100%;
 }
 
@@ -530,7 +532,7 @@ footer .social a:hover {
 /* RESPONSIVIDADE */
 
 /*============= MEDIA QUERIES ==============*/
-/* extra large devices: 1200+ */
+/* extra large devices: 1200 > */
 @media (min-width: 1200px) {
   /* reusable classes */
   .cpntainer {
@@ -542,7 +544,19 @@ footer .social a:hover {
     padding: 10rem 0;
   }
 
-  /* navigation */
+  .section header,
+  #testimonials header {
+    max-width: 32rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button {
+    height: 3.125rem;
+  }
+
+  /* NAVIGATION */
   nav .menu {
     opacity: 1;
     visibility: visible;
@@ -556,19 +570,31 @@ footer .social a:hover {
 
   nav .menu ul li a.title {
     font: 400 1rem var(--body-font);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav .menu ul li a.title.active {
+    font-weight: bold;
+    -webkit-font-smoothing: auto;
   }
 
   nav .icon-menu {
     display: none;
   }
 
+  /* LAYOUT */
+
+  main {
+    margin-top: var(--header-height);
+  }
+
+  /* HOME */
   #home .container {
     grid-auto-flow: column;
     justify-content: space-between;
     margin: 0 auto;
   }
 
-  /* HOME */
   #home .image {
     order: 1;
   }
@@ -579,8 +605,51 @@ footer .social a:hover {
     text-align: left;
   }
 
-  main {
-    margin-top: var(--header-height);
+  /* ABOUT */
+  #about .container {
+    margin: 0 auto;
+    grid-auto-flow: column;
+  }
+
+  /* SERVICES */
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .card {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  /* TESTIMONIALS */
+  #testimonials .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* CONTACT */
+  #contact .container {
+    grid-auto-flow: column;
+    align-items: center;
+  }
+
+  #contact .text {
+    max-width: 25rem;
+  }
+
+  /* FOOTER */
+  footer.section {
+    padding: 3.75rem 0;
+  }
+
+  footer .container {
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer .logo {
+    font-size: 2.25rem;
   }
 }
 /* large devices: 1023 > */
